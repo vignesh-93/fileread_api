@@ -11,7 +11,7 @@ module.exports = function (params) {
   app.get("/readfile", async (req, res) => {
     try {
       fs.readFile('/Users/HP/Documents/fileread_api/Documents/'+req.query.name, 'utf8', function (err, contents) {
-        console.log(contents);
+        // console.log(contents);
         res.send({
           "code" : 200,
           "content": contents
@@ -26,7 +26,10 @@ module.exports = function (params) {
 
   app.post("/writefile", async (req, res) => {
     try {
-      fs.writeFile('/Users/HP/Documents/fileread_api/Documents/'+req.body.filename, req.body.content, function (err, contents) {
+
+      bodycontent = (req.body.content).replace(/(<p[^>]+?>|<p>|<\/p>)/img, "");
+      // console.log(bodycontent,"####")
+      fs.writeFile('/Users/HP/Documents/fileread_api/Documents/'+req.body.filename+'.txt', bodycontent, function (err, contents) {
         // console.log(req.body.filename,"111111111111111111")
         // console.log(req.body.content,"$$$$$$$$$$$$$$$$")
         if (err) throw err;
