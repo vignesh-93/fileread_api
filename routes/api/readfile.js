@@ -10,7 +10,7 @@ module.exports = function (params) {
 
   app.get("/readfile", async (req, res) => {
     try {
-      fs.readFile('/Users/HP/Documents/readfile/Documents/'+req.query.name, 'utf8', function (err, contents) {
+      fs.readFile('/Users/HP/Documents/fileread_api/Documents/'+req.query.name, 'utf8', function (err, contents) {
         console.log(contents);
         res.send({
           "content": contents
@@ -25,7 +25,7 @@ module.exports = function (params) {
 
   app.post("/writefile", async (req, res) => {
     try {
-      fs.writeFile('/Users/HP/Documents/readfile/Documents/'+req.body.filename, req.body.content, function (err, contents) {
+      fs.writeFile('/Users/HP/Documents/fileread_api/Documents/'+req.body.filename, req.body.content, function (err, contents) {
         // console.log(req.body.filename,"111111111111111111")
         // console.log(req.body.content,"$$$$$$$$$$$$$$$$")
         if (err) throw err;
@@ -42,7 +42,7 @@ module.exports = function (params) {
 
   app.get("/showfile", async (req, res) => {
     try {
-      fs.readdir("/Users/HP/Documents/readfile/Documents",function(err, files){
+      fs.readdir("/Users/HP/Documents/fileread_api/Documents",function(err, files){
         if (err) {
         return console.error(err);
         }
