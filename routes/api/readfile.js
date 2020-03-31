@@ -13,6 +13,7 @@ module.exports = function (params) {
       fs.readFile('/Users/HP/Documents/fileread_api/Documents/'+req.query.name, 'utf8', function (err, contents) {
         console.log(contents);
         res.send({
+          "code" : 200,
           "content": contents
         })
       });
@@ -30,6 +31,7 @@ module.exports = function (params) {
         // console.log(req.body.content,"$$$$$$$$$$$$$$$$")
         if (err) throw err;
         res.send({
+          "code" : 200,
           "status": "updated"
         })
       });
@@ -41,17 +43,26 @@ module.exports = function (params) {
   });
 
   app.get("/showfile", async (req, res) => {
+    var newarr = [];
     try {
       fs.readdir("/Users/HP/Documents/fileread_api/Documents",function(err, files){
         if (err) {
         return console.error(err);
         }
+        for(var i = 0;i<files.length;i++){
+          // console.log(files[i],"##")
+          var trim = files[i].replace(/\.[^/.]+$/, "")
+          newarr.push(trim)
+        }
+        // console.log(newarr,"####")
         res.send({
-          "Files": files
+          "code" : 200,
+          "files": newarr
         })
         });
     } catch{
       res.send({
+        "code" : 400,
         "message": "error"
       })
     }
