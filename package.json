@@ -39,7 +39,7 @@
     "multer-s3": "^2.9.0",
     "node-fetch": "^2.6.0",
     "node-rules": "^4.0.2",
-    "nodemailer": "^4.7.0",
+    "nodemailer": "^6.4.16",
     "nodemon": "^1.18.8",
     "npm": "^6.5.0",
     "razorpay": "^2.0.3",
